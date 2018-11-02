@@ -7,11 +7,15 @@ _visit www.actionherojs.com for more information_
 (assuming you have [node](http://nodejs.org/) and NPM installed)
 
 `npm install` or
+
 `yarn`
 
 ## To Run:
 
 `npm start` or
+
+`yarn start` or
+
 `yarn actionhero start cluster`
 
 ## To Test:
