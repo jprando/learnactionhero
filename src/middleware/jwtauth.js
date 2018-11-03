@@ -1,6 +1,6 @@
 module.exports = class JwtAuthMiddleware {
-    constructor(name, api) {
-        this.name = name
+    constructor(api) {
+        this.name = 'jwtauth_middleware'
         this.api = api
         this.global = true
         this.priority = 999
@@ -14,7 +14,7 @@ module.exports = class JwtAuthMiddleware {
             this.api.config.jwtauth.enabled[data.connection.type]
         ) {
             tokenRequired = true
-        }
+        } else return
         let token = ''
         let req = {
             headers:
@@ -53,18 +53,16 @@ module.exports = class JwtAuthMiddleware {
         if (tokenRequired && !token) {
             throw new Error('Authorization Header Not Set')
         } else if (token) {
-            const tokenSucess = tokenData => {
-                // _log('jwt auth token OK')
-                data.connection._jwtTokenData = tokenData
-                // _log(data.connection._jwtTokenData)
-            }
-
-            const tokenError = err => {
-                console.error('jwt auth token ERROR: ', err)
-                throw err
-            }
-
-            this.api.jwtauth.processToken(token, tokenSucess, tokenError)
+            this.api.jwtauth.processToken(
+                token,
+                tokenData => {
+                    data.connection._jwtTokenData = tokenData
+                },
+                err => {
+                    console.error('jwt auth token ERROR: ', err)
+                    throw err
+                }
+            )
         }
     }
 }

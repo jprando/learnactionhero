@@ -1,6 +1,7 @@
 'use strict'
 const jsonwebtoken = require('jsonwebtoken')
 const ActionHero = require('actionhero')
+const JwtAuthMiddleware = require('./../src/middleware/jwtauth')
 
 module.exports = class JwtAuth extends ActionHero.Initializer {
     constructor() {
@@ -52,6 +53,9 @@ module.exports = class JwtAuth extends ActionHero.Initializer {
                 }
             }
         }
+
+        let middleware = new JwtAuthMiddleware(ActionHero.api)
+        ActionHero.api.actions.addMiddleware(middleware)
     }
 
     async start() {}

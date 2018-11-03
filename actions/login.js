@@ -15,7 +15,6 @@ module.exports = class LoginAction extends ActionHero.Action {
     }
 
     async run(data) {
-        console.log(ActionHero.api.jwtauth)
         ActionHero.api.jwtauth.generateToken(
             { user: data.params.user },
             { expiresIn: '60s' },

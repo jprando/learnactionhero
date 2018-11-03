@@ -6,11 +6,18 @@ module.exports = class TesteAction extends Action {
         super()
         this.name = 'teste'
         this.description = 'testando AH API no linux'
-        this.outputExample = {}
         this.authenticate = true
     }
 
+    outputExample() {
+        return {
+            teste: 'ok',
+            nome: 'Teste Jeudi Teste Prando Teste'
+        }
+    }
+
     async run(data) {
+        data.response.teste = 'ok'
         data.response.nome = 'Teste Jeudi Teste Prando Teste'
     }
 }
