@@ -7,7 +7,7 @@ exports.default = {
                 socket: false,
                 testServer: false
             },
-            secret: api.config.serverToken + 'Change Me!',
+            secret: api.config.general.serverToken + 'Change Me!',
             algorithm: 'HS512',
             enableGet: false // enables token as GET parameters in addition to Authorization headers
         }
@@ -23,7 +23,7 @@ exports.production = {
                 socket: false,
                 testServer: false
             },
-            secret: api.config.serverToken + 'Change Me!',
+            secret: api.config.general.serverToken + 'Change Me!',
             algorithm: 'HS512',
             enableGet: false // enables token as GET parameters in addition to Authorization headers
         }

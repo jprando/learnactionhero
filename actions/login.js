@@ -6,7 +6,6 @@ module.exports = class LoginAction extends ActionHero.Action {
         super()
         this.name = 'login'
         this.description = 'autenticar usuario'
-        this.outputExample = {}
         this.inputs = {
             user: { required: true },
             pass: { required: true }
