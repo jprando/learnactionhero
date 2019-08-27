@@ -7,9 +7,9 @@
         "node": ">=8.0.0"
     },
     "dependencies": {
-        "actionhero": "19.0.4",
+        "actionhero": "latest",
         "ioredis": "latest",
-        "jsonwebtoken": "^8.3.0",
+        "jsonwebtoken": "latest",
         "winston": "latest",
         "ws": "latest"
     },
